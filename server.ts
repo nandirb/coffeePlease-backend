@@ -52,14 +52,6 @@ async function startServer() {
     `);
   });
 
-  /* httpServer.listen(PORT, () => {
-    // connect to mongo database
-    connect();
-
-    console.log(`GraphQL Server is now running on ${PORT}`);
-  }); */
-
-  // GRACEFULL SHUTDOWN
   process.stdin.resume(); // so the program will not close instantly
 }
 startServer();
