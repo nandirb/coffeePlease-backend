@@ -48,10 +48,9 @@ async function startServer() {
     connect();
     console.log(`
       🚀  Server is ready at ${PORT}
-      📭  Query at https://studio.apollographql.com/dev
     `);
   });
 
-  process.stdin.resume(); // so the program will not close instantly
+  process.stdin.resume();
 }
 startServer();

@@ -3,7 +3,6 @@ export const types = `
     _id: String!
     name: String!
     type : String!
-    description: String!
   }
 `;
 

@@ -3,12 +3,13 @@ import * as path from "path";
 export const uploadsFolderPath = path.join(__dirname, "../private/uploads");
 
 export const authCookieOptions = (secure: boolean) => {
-  const oneDay = 1 * 24 * 3600 * 1000; // 1 day
+  // const oneDay = 1 * 24 * 3600 * 1000; // 1 day
+  const oneWeek = 7 * 24 * 3600 * 1000;
 
   const cookieOptions = {
     httpOnly: true,
-    expires: new Date(Date.now() + oneDay),
-    maxAge: oneDay,
+    expires: new Date(Date.now() + oneWeek),
+    maxAge: oneWeek,
     secure,
   };
 
