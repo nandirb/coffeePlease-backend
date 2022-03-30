@@ -14,6 +14,7 @@ interface IUsersUpdate extends IUser {
 }
 
 const login = async (args: ILogin, res: express.Response, secure: boolean) => {
+  console.log("backlogin", args);
   const response = await Users.login(args);
   const { token } = response;
   res.cookie("auth-token", token, authCookieOptions(secure));

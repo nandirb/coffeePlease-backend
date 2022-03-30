@@ -14,7 +14,7 @@ const userQueries = {
    */
   async currentUser(_root, _args, { user }: IContext) {
     if (user) {
-      return await Users.findOne({ _id: user._id, isActive: { $ne: false } });
+      return await Users.findOne({ _id: user._id });
     }
     return null;
   },

@@ -9,6 +9,7 @@ dotenv.config();
 const apolloServer = new ApolloServer({
   typeDefs,
   resolvers,
+
   context: ({ req, res, connection }: any) => {
     let user = req && req.user ? req.user : null;
     if (!req) {
