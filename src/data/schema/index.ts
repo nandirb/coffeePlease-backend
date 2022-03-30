@@ -5,13 +5,11 @@ import {
   types as UserTypes,
 } from "./user";
 import { queries as ProductQueries, types as ProductTypes } from "./products";
-import { queries as ServiceQueries, types as ServiceTypes } from "./services";
 import { queries as CategoryQueries, types as CategoryTypes } from "./category";
 
 export const types = `
   ${UserTypes}
   ${ProductTypes}
-  ${ServiceTypes}
   ${CategoryTypes}
 `;
 
@@ -19,7 +17,6 @@ export const queries = `
   type Query {
     ${UserQueries}
     ${ProductQueries}
-    ${ServiceQueries}
     ${CategoryQueries}
   }
 `;

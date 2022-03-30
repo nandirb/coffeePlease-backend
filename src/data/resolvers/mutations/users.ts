@@ -1,6 +1,6 @@
 import * as express from "express";
 import { Users } from "../../../db/models";
-import { IUser } from "../../../db/models/definitions/users";
+import { IUser } from "../../../db/models/definitions/user";
 import { IContext } from "../../types";
 import { authCookieOptions } from "../../utils";
 

@@ -4,7 +4,7 @@ import jwt from "jsonwebtoken";
 import { Model, model } from "mongoose";
 import sha256 from "sha256";
 import { generateRandomString } from "../../data/utils";
-import { IUser, IUserDocument, userSchema } from "./definitions/users";
+import { IUser, IUserDocument, userSchema } from "./definitions/user";
 
 const SALT_WORK_FACTOR = 10;
 

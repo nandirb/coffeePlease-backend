@@ -33,7 +33,6 @@ export const userSchema = new Schema({
   phoneNumber: field({ type: String, label: "Phone number", optional: true }),
   email: field({
     type: String,
-    optional: true,
     match: [
       /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,10})+$/,
       "Please fill a valid email address",
@@ -44,7 +43,6 @@ export const userSchema = new Schema({
   resetPasswordToken: field({ type: String }),
   resetPassword: field({ type: String }),
   resetPasswordExpires: field({ type: Date }),
-  // details: field({ type: detailSchema, default: {}, label: "Details" }),
   isActive: field({ type: Boolean, default: true, label: "Is active" }),
   avatar: field({ type: String, label: "Avatar" }),
   fullName: field({ type: String, label: "Full name" }),

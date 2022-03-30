@@ -4,7 +4,6 @@ import Query from "./queries";
 
 const resolvers = {
   User,
-
   Mutation,
   Query,
 };
