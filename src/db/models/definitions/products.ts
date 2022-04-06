@@ -10,6 +10,7 @@ export interface IProduct {
   unitPrice: number;
   categoryId: string;
   image: string;
+  productStatus: string;
 }
 
 export interface IProductDocument extends IProduct, Document {
@@ -26,4 +27,5 @@ export const productSchema = new Schema({
   unitPrice: field({ type: Number, label: "Unit price" }),
   categoryId: field({ type: String, label: "categoryId" }),
   image: field({ type: String, label: "Product image" }),
+  productStatus: field({ type: String, default: "" }),
 });
