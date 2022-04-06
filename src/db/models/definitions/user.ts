@@ -14,9 +14,8 @@ export interface IUser {
   isActive?: boolean;
   avatar?: string;
   fullName?: string;
-  firstName?: string;
-  lastName?: string;
   address?: string;
+  membership?: string;
   deviceTokens?: string[];
 }
 
@@ -24,13 +23,12 @@ export interface IUserDocument extends IUser, Document {
   _id: string;
 }
 
-// User schema
 export const userSchema = new Schema({
   createdAt: field({
     type: Date,
     default: Date.now,
   }),
-  phoneNumber: field({ type: String, label: "Phone number", optional: true }),
+  phoneNumber: field({ type: Number, label: "Phone number", optional: true }),
   email: field({
     type: String,
     match: [
@@ -43,11 +41,23 @@ export const userSchema = new Schema({
   resetPasswordToken: field({ type: String }),
   resetPassword: field({ type: String }),
   resetPasswordExpires: field({ type: Date }),
-  isActive: field({ type: Boolean, default: true, label: "Is active" }),
   avatar: field({ type: String, label: "Avatar" }),
   fullName: field({ type: String, label: "Full name" }),
-  firstName: field({ type: String, label: "First name" }),
-  lastName: field({ type: String, optional: true, label: "Last name" }),
   deviceTokens: field({ type: [String], default: [], label: "Device tokens" }),
-  address: field({ type: String, optional: true, label: "Address" }),
+  point: field({ type: Number, default: 0, label: "Point" }),
+  address: field({ type: String }),
+  membership: {
+    new: {
+      type: Boolean,
+      default: true,
+    },
+    silver: {
+      type: Boolean,
+      default: false,
+    },
+    golden: {
+      type: Boolean,
+      default: false,
+    },
+  },
 });

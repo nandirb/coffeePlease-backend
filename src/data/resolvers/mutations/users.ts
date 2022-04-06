@@ -14,7 +14,6 @@ interface IUsersUpdate extends IUser {
 }
 
 const login = async (args: ILogin, res: express.Response, secure: boolean) => {
-  console.log("backlogin", args);
   const response = await Users.login(args);
   const { token } = response;
   res.cookie("auth-token", token, authCookieOptions(secure));
@@ -22,9 +21,6 @@ const login = async (args: ILogin, res: express.Response, secure: boolean) => {
 };
 
 const userMutations = {
-  /*
-   * Register
-   */
   async register(
     _root,
     args: ILogin & { confirmPass: string },
@@ -41,9 +37,6 @@ const userMutations = {
     return login({ ...args }, res, requestInfo.secure);
   },
 
-  /*
-   * Login
-   */
   async login(_root, args: ILogin, { res, requestInfo }: IContext) {
     return login(args, res, requestInfo.secure);
   },
@@ -53,9 +46,6 @@ const userMutations = {
     return "loggedout";
   },
 
-  /*
-   * Change user password
-   */
   usersChangePassword(
     _root,
     args: { currentPassword: string; newPassword: string },
@@ -64,9 +54,6 @@ const userMutations = {
     return Users.changePassword({ _id: user._id, ...args });
   },
 
-  /*
-   * Update user
-   */
   async usersUpdate(_root, args: IUsersUpdate) {
     const { _id } = args;
 

@@ -4,13 +4,33 @@ import {
   queries as UserQueries,
   types as UserTypes,
 } from "./user";
-import { queries as ProductQueries, types as ProductTypes } from "./products";
-import { queries as CategoryQueries, types as CategoryTypes } from "./category";
+import {
+  mutations as ProductMutations,
+  queries as ProductQueries,
+  types as ProductTypes,
+} from "./products";
+import {
+  mutations as CategoryMutations,
+  queries as CategoryQueries,
+  types as CategoryTypes,
+} from "./category";
+import {
+  mutations as CartMutations,
+  queries as CartQueries,
+  types as CartTypes,
+} from "./cart";
+import {
+    mutations as OrderMutations,
+    queries as OrderQueries,
+    types as OrderTypes,
+  } from "./order";
 
 export const types = `
   ${UserTypes}
   ${ProductTypes}
   ${CategoryTypes}
+  ${CartTypes}
+  ${OrderTypes}
 `;
 
 export const queries = `
@@ -18,12 +38,18 @@ export const queries = `
     ${UserQueries}
     ${ProductQueries}
     ${CategoryQueries}
+    ${CartQueries}
+    ${OrderQueries}
   }
 `;
 
 export const mutations = `
   type Mutation {
     ${UserMutations}
+    ${CartMutations}
+    ${ProductMutations}
+    ${CategoryMutations}
+    ${OrderMutations}
   }
 `;
 

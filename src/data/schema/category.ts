@@ -9,3 +9,7 @@ export const types = `
 export const queries = `
   categories(type: String): [Category!]
 `;
+
+export const mutations = `
+  
+`;

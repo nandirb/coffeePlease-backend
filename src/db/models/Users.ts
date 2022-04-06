@@ -90,17 +90,14 @@ export const loadClass = () => {
       // Checking if user has email
       if (email) {
         previousEntry = await Users.find({ ...query, email });
-
-        // Checking if duplicated
         if (previousEntry.length > 0) {
           throw new Error("Duplicated email");
         }
       }
 
+      // Checking if user has phone number
       if (phoneNumber) {
         previousEntry = await Users.find({ ...query, phoneNumber });
-
-        // Checking if duplicated
         if (previousEntry.length > 0) {
           throw new Error("Duplicated phone number");
         }
@@ -115,7 +112,6 @@ export const loadClass = () => {
      * Create new user
      */
     public static async createUser(doc: IUser) {
-      // empty string password validation
       if (doc.password === "") {
         throw new Error("Password can not be empty");
       }
@@ -123,7 +119,6 @@ export const loadClass = () => {
       // Checking duplicated email
       await Users.checkDuplication({
         email: doc.email,
-        // phoneNumber: doc.phoneNumber,
       });
 
       this.checkPassword(doc.password);
@@ -131,7 +126,6 @@ export const loadClass = () => {
       return Users.create({
         ...doc,
         isActive: true,
-        // hash password
         password: await this.generatePassword(doc.password),
       });
     }
@@ -139,15 +133,10 @@ export const loadClass = () => {
     /**
      * Update user information
      */
-    public static async updateUser(
-      _id: string,
-      { firstName, lastName, email, phoneNumber }: IUser
-    ) {
+    public static async updateUser(_id: string, { email, phoneNumber }: IUser) {
       const savedUser = await Users.findOne({ _id });
 
       const doc = {
-        firstName: firstName || savedUser.firstName,
-        lastName: lastName || savedUser.lastName,
         email: email || savedUser.email,
         phoneNumber: phoneNumber || savedUser.phoneNumber,
       };
@@ -232,9 +221,7 @@ export const loadClass = () => {
      * Sends reset password link to found user's email
      */
     public static async forgotPassword(email: string) {
-      // find user
       const user = await Users.findOne({ email });
-
       if (!user) {
         throw new Error("Invalid email");
       }

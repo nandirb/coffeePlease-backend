@@ -3,7 +3,6 @@ import * as dotenv from "dotenv";
 import resolvers from "./data/resolvers";
 import typeDefs from "./data/schema";
 
-// load environment variables
 dotenv.config();
 
 const apolloServer = new ApolloServer({

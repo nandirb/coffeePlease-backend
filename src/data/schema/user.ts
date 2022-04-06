@@ -2,8 +2,6 @@ const commonParams = `
   email: String,
   phoneNumber: String,
   avatar: String
-  firstName: String,
-  lastName: String
   address: String
 `;
 
