@@ -1,13 +1,14 @@
 import { Document, Schema } from "mongoose";
-import { IProduct } from "./products";
 import { field } from "./utils";
 
 export interface IOrder {
-  createdAt: Date;
+  createdAt?: Date;
   status: string;
+  totalPrice: number;
+  userId: string;
   deliverType: string;
   deliverAddress?: string;
-  products?: IProduct[];
+  items: Object[];
 }
 
 export interface IOrderDocument extends IOrder, Document {
@@ -16,8 +17,10 @@ export interface IOrderDocument extends IOrder, Document {
 
 export const orderSchema = new Schema({
   createdAt: field({ type: String, label: "Date" }),
-  status: field({ type: String, label: "Order status" }),
+  status: field({ type: String, default: "PROCESSING", label: "Order status" }),
   deliverType: field({ type: String, label: "Deliver type" }),
-  deliverAddress: field({ type: Number, label: "Deliver address" }),
-  products: field({ type: [Object], label: "Products with count" }),
+  deliverAddress: field({ type: String, label: "Deliver address" }),
+  totalPrice: field({ type: Number, label: "Total Price" }),
+  userId: field({ type: String, label: "User id" }),
+  items: field({ type: Object, label: "Order items" }),
 });

@@ -19,6 +19,7 @@ export const types = `
     category: ProductCategory
     createdAt: String
     image: String
+    productStatus:String
   }
 `;
 

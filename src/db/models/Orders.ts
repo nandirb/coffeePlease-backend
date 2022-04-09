@@ -2,30 +2,31 @@ import { Model, model } from "mongoose";
 import { orderSchema, IOrderDocument, IOrder } from "./definitions/order";
 
 export interface IOrderModel extends Model<IOrderDocument> {
-  getOrders(): Promise<IOrderDocument>;
+  getOrder(_id: string): Promise<IOrderDocument>;
   addOrder(doc: IOrder): Promise<IOrderDocument>;
 }
 
 export const loadClass = () => {
   class Order {
-    public static async getOrders() {
-      const orders = await Orders.find();
+    //1 order
+    public static async getOrder(_id: string) {
+      const order = await Orders.findOne({ _id });
 
-      if (!orders) {
-        throw new Error("Service orders not found");
+      if (!order) {
+        throw new Error("Product not found");
       }
 
-      return orders;
+      return order;
     }
 
     public static async addOrder(doc: IOrder) {
-      // generate code automatically
-
-      return Orders.create({
+      const order = await Orders.create({
         ...doc,
         status: "PROCESSING",
         createdAt: new Date(),
       });
+
+      return order;
     }
   }
 

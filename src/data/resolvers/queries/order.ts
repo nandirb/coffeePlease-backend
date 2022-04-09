@@ -1,12 +1,19 @@
-import { Orders } from "../../../db/models";
+import Orders from "../../../db/models/Orders";
 
 const orderQueries = {
   /**
    * Get order by list
    */
 
-  async orders(_root, _args) {
-    return Orders.find();
+  async orders(_root) {
+    return await Orders.find();
+  },
+
+  async myOrders(_root, _args, { userId }: { userId: string }) {
+    if (userId) {
+      return await Orders.findOne({ userId: userId });
+    }
+    return null;
   },
 };
 

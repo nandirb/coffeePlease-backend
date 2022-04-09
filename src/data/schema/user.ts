@@ -3,12 +3,13 @@ const commonParams = `
   phoneNumber: String,
   avatar: String
   address: String
+  point: Int
+  reward:Int
 `;
 
 export const types = `
   type User {
     _id: String!
-    isActive: Boolean
     fullName: String
     ${commonParams}
   }
@@ -17,6 +18,7 @@ export const types = `
 export const queries = `
   userDetail(_id: String): User
   currentUser: User
+  users: [User]
 `;
 
 export const mutations = `

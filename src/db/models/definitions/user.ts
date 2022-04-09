@@ -11,12 +11,13 @@ export interface IUser {
   password?: string;
   resetPassword?: string;
   resetPasswordExpires?: number;
-  isActive?: boolean;
   avatar?: string;
+  point?: number;
+  reward?: number;
   fullName?: string;
   address?: string;
-  membership?: string;
   deviceTokens?: string[];
+  orders?: [Schema.Types.Array];
 }
 
 export interface IUserDocument extends IUser, Document {
@@ -45,19 +46,7 @@ export const userSchema = new Schema({
   fullName: field({ type: String, label: "Full name" }),
   deviceTokens: field({ type: [String], default: [], label: "Device tokens" }),
   point: field({ type: Number, default: 0, label: "Point" }),
+  reward: field({ type: Number, default: 0, label: "Reward" }),
   address: field({ type: String }),
-  membership: {
-    new: {
-      type: Boolean,
-      default: true,
-    },
-    silver: {
-      type: Boolean,
-      default: false,
-    },
-    golden: {
-      type: Boolean,
-      default: false,
-    },
-  },
+  orders: field({ type: Array }),
 });
