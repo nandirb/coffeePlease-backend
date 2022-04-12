@@ -29,7 +29,7 @@ export const userSchema = new Schema({
     type: Date,
     default: Date.now,
   }),
-  phoneNumber: field({ type: Number, label: "Phone number", optional: true }),
+  phoneNumber: field({ type: String, label: "Phone number", optional: true }),
   email: field({
     type: String,
     match: [

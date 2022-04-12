@@ -9,9 +9,10 @@ const orderQueries = {
     return await Orders.find();
   },
 
-  async myOrders(_root, _args, { userId }: { userId: string }) {
+  async myOrders(_root, { userId }: { userId: string }) {
+
     if (userId) {
-      return await Orders.findOne({ userId: userId });
+      return await Orders.find({ userId });
     }
     return null;
   },

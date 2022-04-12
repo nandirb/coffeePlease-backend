@@ -7,7 +7,7 @@ export interface IOrder {
   totalPrice: number;
   userId: string;
   deliverType: string;
-  deliverAddress?: string;
+  deliverAddress?: Object;
   items: Object[];
 }
 
@@ -19,7 +19,7 @@ export const orderSchema = new Schema({
   createdAt: field({ type: String, label: "Date" }),
   status: field({ type: String, default: "PROCESSING", label: "Order status" }),
   deliverType: field({ type: String, label: "Deliver type" }),
-  deliverAddress: field({ type: String, label: "Deliver address" }),
+  deliverAddress: field({ type: Object, label: "Deliver address" }),
   totalPrice: field({ type: Number, label: "Total Price" }),
   userId: field({ type: String, label: "User id" }),
   items: field({ type: Object, label: "Order items" }),

@@ -8,12 +8,11 @@ export interface IOrderModel extends Model<IOrderDocument> {
 
 export const loadClass = () => {
   class Order {
-    //1 order
     public static async getOrder(_id: string) {
       const order = await Orders.findOne({ _id });
 
       if (!order) {
-        throw new Error("Product not found");
+        throw new Error("Order not found");
       }
 
       return order;
