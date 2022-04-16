@@ -1,15 +1,15 @@
 export const types = `
-  type Product {
+  type productType {
     _id: String!
     name: String
-    unitPrice: Float
+    unitPrice: Int
     image: String
   }
 
   input productInput {
     _id: String
     name: String
-    unitPrice: Float
+    unitPrice: Int
     image: String
   }
 
@@ -20,7 +20,7 @@ export const types = `
   }
 
   type itemType {
-    product: Product
+    product: productType
     count: Int
   }
 

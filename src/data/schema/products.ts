@@ -14,7 +14,7 @@ export const types = `
     type: String
     cal: String
     description: String
-    unitPrice: Float
+    unitPrice: Int
     categoryId: String
     category: ProductCategory
     createdAt: String
