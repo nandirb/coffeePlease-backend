@@ -10,7 +10,7 @@ export interface IProduct {
   unitPrice: number;
   categoryId: string;
   image: string;
-  productStatus: string;
+  productStatus?: string;
 }
 
 export interface IProductDocument extends IProduct, Document {

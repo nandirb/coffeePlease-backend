@@ -29,6 +29,15 @@ export const loadClass = () => {
      */
     public static async addProduct(doc: IProduct) {
       // generate code automatically
+
+      if (typeof doc.unitPrice !== typeof 0) {
+        throw new Error("Price should be number");
+      }
+
+      if (doc.productStatus !== "cafe" || "store") {
+        throw new Error("Product type should be cafe or store");
+      }
+
       const product = await Products.create({
         ...doc,
         createdAt: new Date(),

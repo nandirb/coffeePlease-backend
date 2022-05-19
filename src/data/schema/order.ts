@@ -8,15 +8,15 @@ export const types = `
 
   input productInput {
     _id: String
+    image: String
     name: String
     unitPrice: Int
-    image: String
   }
 
 
   input itemInput {
-    product: productInput
     count: Int
+    product: productInput
   }
 
   type itemType {

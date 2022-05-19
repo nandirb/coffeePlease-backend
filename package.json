@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
     "start": "nodemon server.ts",
     "dev": "nodemon server.ts"
   },
@@ -14,25 +14,33 @@
   "license": "ISC",
   "dependencies": {
     "@graphql-tools/schema": "^8.3.1",
+    "@types/faker": "^6.6.9",
     "apollo-server-express": "^3.6.3",
     "bcryptjs": "^2.4.3",
     "cookie-parser": "^1.4.6",
     "cors": "^2.8.5",
     "dotenv": "^16.0.0",
     "express": "^4.17.2",
+    "faker": "^6.6.6",
     "graphql": "^16.3.0",
     "graphql-tools": "^8.2.0",
     "http": "^0.0.1-security",
     "jsonwebtoken": "^8.5.1",
+    "meteor-random": "^0.0.3",
     "mongoose": "^6.1.8",
     "nodemon": "^2.0.15",
     "sha256": "^0.2.0"
   },
   "devDependencies": {
+    "@faker-js/faker": "^6.2.0",
     "@types/bcryptjs": "^2.4.2",
     "@types/cookie-parser": "^1.4.2",
+    "@types/jest": "^27.4.1",
     "@types/jsonwebtoken": "^8.5.8",
     "@types/sha256": "^0.2.0",
+    "jest": "^27.5.1",
+    "jest-tobetype": "^1.1.0",
+    "ts-jest": "^27.1.4",
     "ts-node": "^10.4.0",
     "ts-node-dev": "^1.1.8",
     "typescript": "^4.5.5"

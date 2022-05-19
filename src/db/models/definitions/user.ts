@@ -21,6 +21,10 @@ export interface IUser {
 }
 
 export interface IUserDocument extends IUser, Document {
+  details: any;
+  links: any;
+  code(code: any);
+  validatedTokens(validatedTokens: any);
   _id: string;
 }
 

@@ -9,6 +9,13 @@ import { IUser, IUserDocument, userSchema } from "./definitions/user";
 const SALT_WORK_FACTOR = 10;
 
 export interface IUserModel extends Model<IUserDocument> {
+  editProfile(_id: any, arg1: { details: any; email: any; });
+  setUserActiveOrInactive(arg0: string);
+  configEmailSignatures(_id: any, arg1: { brandId: string; signature: string; }[]);
+  configGetNotificationByEmail(_id: any, arg1: boolean);
+  resetPassword(arg0: { token: string; newPassword: string; });
+  resetMemberPassword(arg0: { _id: any; newPassword: string; });
+  logout(_user: any, arg1: string);
   getUser(_id: string): Promise<IUserDocument>;
   checkPassword(password: string): void;
   checkDuplication({
@@ -262,37 +269,6 @@ export const loadClass = () => {
 
       return [createToken, createRefreshToken];
     }
-
-    /*
-     * Renews tokens
-     */
-    /* public static async refreshTokens(refreshToken: string) {
-      let _id = "";
-
-      try {
-        // validate refresh token
-        const { user } = jwt.verify(refreshToken, this.getSecret());
-
-        _id = user._id;
-        // if refresh token is expired then force to login
-      } catch (e) {
-        return {};
-      }
-
-      const dbUser = await Users.getUser(_id);
-
-      // recreate tokens
-      const [newToken, newRefreshToken] = await this.createTokens(
-        dbUser,
-        this.getSecret()
-      );
-
-      return {
-        token: newToken,
-        refreshToken: newRefreshToken,
-        user: dbUser,
-      };
-    } */
 
     /*
      * Validates user credentials and generates tokens
